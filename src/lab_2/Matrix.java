@@ -43,8 +43,24 @@ public class Matrix {
             }
             addedMatrix.addRow(row);
         }
-
         return addedMatrix;
+    }
+
+    public Matrix multiply(Matrix matrix){
+        int cell;
+        Matrix auxMatrix = new Matrix(this.getRows(), this.getColumns());
+        for (int i = 0; i < this.getRows(); i++) {
+            ArrayList<Integer> row = new ArrayList<>();
+            for (int j = 0; j < this.getColumns(); j++) {
+                int cellA = this.matrix.get(i).get(j);
+                int cellB = matrix.getMatrix().get(j).get(i);
+
+                cell = cellA * cellB;
+                row.add(cell);
+            }
+            auxMatrix.addRow(row);
+        }
+        return auxMatrix;
     }
 
     public void print() {
